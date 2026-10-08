@@ -1,0 +1,40 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: grid;
+  place-items: center;
+  background: var(--deep);
+  transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.preloader--lifting {
+  transform: translateY(-100%);
+}
+
+.preloader__word {
+  position: relative;
+  font-size: clamp(2.75rem, 10vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+}
+
+.preloader__ghost {
+  color: rgba(255, 255, 255, 0.18);
+}
+
+.preloader__fill {
+  position: absolute;
+  inset: 0;
+  color: var(--white);
+  white-space: nowrap;
+  clip-path: inset(100% 0 0 0);
+  animation: preloader-fill 1s ease-in-out 0.1s forwards;
+}
+
+@keyframes preloader-fill {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}

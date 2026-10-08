@@ -1,0 +1,124 @@
+.certs {
+  background: var(--paper);
+}
+
+.certs__list {
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  border-top: 2px solid var(--ink);
+}
+
+.cert {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'title'
+    'issuer'
+    'date'
+    'link';
+  gap: 0.15rem 1rem;
+  align-items: center;
+  padding: 1.15rem 0.25rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  isolation: isolate;
+  transition: color 0.35s, padding 0.45s var(--ease);
+}
+
+/* black panel that wipes in on hover */
+.cert::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--ink);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.45s var(--ease);
+}
+
+.cert:hover,
+.cert--linked:focus-visible {
+  padding-inline: 1.1rem;
+  color: var(--white);
+}
+
+.cert:hover::before,
+.cert--linked:focus-visible::before {
+  transform: scaleY(1);
+}
+
+.cert__title {
+  grid-area: title;
+  font-size: clamp(1.1875rem, 2.4vw, 1.625rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.cert__issuer {
+  grid-area: issuer;
+  font-weight: 600;
+}
+
+.cert__issuer::before {
+  content: '';
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.cert__date {
+  grid-area: date;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  opacity: 0.72;
+  font-variant-numeric: tabular-nums;
+}
+
+.cert__link {
+  grid-area: link;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  justify-self: start;
+  margin-top: 0.6rem;
+  padding: 0.4rem 0.9rem;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cert__link:empty {
+  display: none;
+}
+
+.cert__link svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  transition: transform 0.35s var(--ease);
+}
+
+.cert:hover .cert__link svg {
+  transform: translate(3px, -3px);
+}
+
+@media (min-width: 820px) {
+  .cert {
+    grid-template-columns: 8.5rem minmax(0, 1fr) 13rem 10.5rem;
+    grid-template-areas: 'date title issuer link';
+    gap: 1.5rem;
+    padding-block: 1.5rem;
+  }
+
+  .cert__link {
+    justify-self: end;
+    margin-top: 0;
+  }
+}

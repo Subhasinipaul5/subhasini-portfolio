@@ -1,0 +1,148 @@
+.training {
+  background: var(--mist);
+}
+
+.training__head {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.training__label {
+  color: var(--teal-deep);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.training__title {
+  max-width: 20ch;
+  margin-top: 0.75rem;
+  font-size: clamp(2rem, 4.6vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.training__org {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  align-items: baseline;
+}
+
+.training__org strong {
+  font-weight: 800;
+}
+
+.training__org span {
+  color: var(--gray);
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.training__summary {
+  max-width: 32rem;
+  margin-block: 0.75rem 1.25rem;
+  color: #2c2c2c;
+}
+
+/* ---------- steps ---------- */
+.training__steps {
+  position: relative;
+  display: grid;
+  margin-top: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+/* dashed connector (vertical on phones) */
+.training__steps::before {
+  content: '';
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  border-left: 2px dashed rgba(6, 41, 43, 0.35);
+  transform: translateX(-1px);
+}
+
+.training__step {
+  position: relative;
+  padding: 0 0 2.25rem 4rem;
+}
+
+.training__step:last-child {
+  padding-bottom: 0;
+}
+
+.training__node {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--mist);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  line-height: 1;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.3s var(--ease);
+}
+
+.training__step:hover .training__node {
+  border-color: var(--teal);
+  background: var(--aqua);
+  transform: scale(1.12);
+}
+
+.training__step h3 {
+  padding-top: 0.35rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.training__step ul {
+  margin-top: 0.6rem;
+}
+
+.training__step ul li {
+  padding-block: 0.3rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+.training__step ul li:last-child {
+  border-bottom: 0;
+}
+
+@media (min-width: 860px) {
+  .training__head {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 4rem;
+    align-items: end;
+  }
+}
+
+@media (min-width: 980px) {
+  .training__steps {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.75rem;
+  }
+
+  .training__steps::before {
+    top: 1.25rem;
+    bottom: auto;
+    left: 1.25rem;
+    right: calc((100% - 7rem) / 5 - 1.25rem);
+    border-left: 0;
+    border-top: 2px dashed rgba(6, 41, 43, 0.35);
+    transform: translateY(-1px);
+  }
+
+  .training__step {
+    padding: 3.5rem 0 0;
+  }
+}

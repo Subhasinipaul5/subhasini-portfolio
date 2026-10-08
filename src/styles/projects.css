@@ -1,0 +1,206 @@
+.projects__track {
+  position: relative;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-block: 3.5rem 4rem;
+}
+
+.projects__path {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.projects__list {
+  position: relative;
+  display: grid;
+  gap: 3.5rem;
+}
+
+/* ---------- the hole-punched tag card ---------- */
+.project {
+  width: 100%;
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.project__tag {
+  position: relative;
+  padding: 0.5rem;
+  border: 1px solid #e3e3e3;
+  border-radius: 2rem;
+  background: var(--white);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.07);
+  transition: background-color 0.6s, border-color 0.6s, box-shadow 0.6s, transform 0.5s var(--ease);
+}
+
+.project--active .project__tag {
+  border-color: var(--teal);
+  background: var(--teal);
+  box-shadow: 0 22px 50px rgba(78, 154, 152, 0.3);
+}
+
+.project__hole {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid #c4c4c4;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #cfcfcf, #f2f2f2);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  transform: translateX(-50%);
+}
+
+.project__inner {
+  margin-top: 2.25rem;
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  border-radius: 1.5rem;
+  background: var(--mist);
+}
+
+.project__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.project__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.project__status--ongoing {
+  background: var(--teal-deep);
+  color: var(--white);
+}
+
+.project__status--ongoing::before {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--white);
+  animation: status-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes status-pulse {
+  50% { opacity: 0.25; }
+}
+
+.project__period {
+  color: var(--gray);
+  font-weight: 600;
+}
+
+.project__title {
+  margin-top: 0.9rem;
+  font-size: clamp(1.625rem, 3.4vw, 2.125rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.project__summary {
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+
+.project__points {
+  margin-top: 1rem;
+}
+
+.project__points li {
+  position: relative;
+  padding: 0 0 0.6rem 1.4rem;
+  color: #2c2c2c;
+  font-size: 0.9688rem;
+  line-height: 1.55;
+}
+
+.project__points li::before {
+  content: '';
+  position: absolute;
+  top: 0.62em;
+  left: 0;
+  width: 0.6rem;
+  height: 2px;
+  background: var(--teal);
+}
+
+.project__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.project__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+
+/* ---------- handwritten note at the end ---------- */
+.projects__note {
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  line-height: 1.2;
+  transform: rotate(-3deg);
+}
+
+.projects__note a {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--teal);
+}
+
+.projects__note a:hover {
+  color: var(--teal-deep);
+}
+
+@media (min-width: 900px) {
+  .projects__track {
+    padding-block: 4.5rem 5.5rem;
+  }
+
+  .projects__list {
+    gap: 4.5rem;
+  }
+
+  .project {
+    width: 62%;
+    margin-inline: 0;
+  }
+
+  .project:nth-child(odd) {
+    margin-left: auto;
+  }
+
+  .project:nth-child(odd) .project__tag {
+    transform: rotate(1deg);
+  }
+
+  .project:nth-child(even) .project__tag {
+    transform: rotate(-1deg);
+  }
+
+  .project:hover .project__tag,
+  .project:focus-within .project__tag {
+    transform: rotate(0deg) translateY(-4px);
+  }
+}
